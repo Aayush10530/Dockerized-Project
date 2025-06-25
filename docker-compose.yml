@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  service_1:
+    build: ./service_1
+    container_name: service_1
+    expose:
+      - "8001"
+
+  service_2:
+    build: ./service_2
+    container_name: service_2
+    expose:
+      - "8002"
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - service_1
+      - service_2 
